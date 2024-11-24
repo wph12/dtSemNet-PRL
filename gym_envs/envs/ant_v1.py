@@ -115,7 +115,7 @@ class AntV1Env(mujoco_env.MujocoEnv, utils.EzPickle):
     def reset_model(self):
         qpos = self.init_qpos + self.np_random.uniform(
             size=self.model.nq, low=-.1, high=.1)
-        qvel = self.init_qvel + self.np_random.randn(self.model.nv) * .1
+        qvel = self.init_qvel + self.np_random.standard_normal(self.model.nv) * .1
 
         # Set everything other than ant to original position and 0 velocity.
         qpos[15:] = self.init_qpos[15:]
@@ -182,7 +182,7 @@ class AntV1UpEnv(AntV1Env):
     def reset_model(self):
         qpos = self.init_qpos + self.np_random.uniform(
             size=self.model.nq, low=-.1, high=.1)
-        qvel = self.init_qvel + self.np_random.randn(self.model.nv) * .1
+        qvel = self.init_qvel + self.np_random.standard_normal(self.model.nv) * .1
 
         self.set_state(qpos, qvel)
         return self._get_obs()
@@ -223,7 +223,7 @@ class AntV1DownEnv(AntV1Env):
     def reset_model(self):
         qpos = self.init_qpos + self.np_random.uniform(
             size=self.model.nq, low=-.1, high=.1)
-        qvel = self.init_qvel + self.np_random.randn(self.model.nv) * .1
+        qvel = self.init_qvel + self.np_random.standard_normal(self.model.nv) * .1
 
         self.set_state(qpos, qvel)
         return self._get_obs()
@@ -268,7 +268,7 @@ class AntV1LeftEnv(AntV1Env):
     def reset_model(self):
         qpos = self.init_qpos + self.np_random.uniform(
             size=self.model.nq, low=-.1, high=.1)
-        qvel = self.init_qvel + self.np_random.randn(self.model.nv) * .1
+        qvel = self.init_qvel + self.np_random.standard_normal(self.model.nv) * .1
 
         self.set_state(qpos, qvel)
         return self._get_obs()
@@ -313,7 +313,7 @@ class AntV1RightEnv(AntV1Env):
     def reset_model(self):
         qpos = self.init_qpos + self.np_random.uniform(
             size=self.model.nq, low=-.1, high=.1)
-        qvel = self.init_qvel + self.np_random.randn(self.model.nv) * .1
+        qvel = self.init_qvel + self.np_random.standard_normal(self.model.nv) * .1
 
         self.set_state(qpos, qvel)
         return self._get_obs()
